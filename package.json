@@ -1,0 +1,38 @@
+{
+  "name": "cryptowin",
+  "version": "1.0.0",
+  "description": "Trading Platform for begginers",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raymaen/cryptowin.live.git"
+  },
+  "author": "Ray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raymaen/cryptowin.live/issues"
+  },
+  "homepage": "https://github.com/raymaen/cryptowin.live#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.17.1",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.14",
+    "morgan": "^1.9.1",
+    "validator": "^11.0.0"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "nodemon": "^1.19.1"
+  }
+}
