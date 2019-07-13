@@ -1,0 +1,6 @@
+Server depenencies
+
+npm install --save bcryptjs concurrently express path is-empty jsonwebtoken mongoose morgan validator
+
+Client depenencies
+npm install --save axios  history  react-redux  react-router-dom redux  redux-devtools-extension  redux-thunk 
