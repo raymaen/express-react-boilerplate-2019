@@ -1,14 +1,13 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const logger = require("morgan");
-//const sampleRoutes = require("./api/routes/sampleRoutes");
+const publicRoutes = require("./api/routes/publicRoutes");
+const adminRoutes = require("./api/routes/adminRoutes");
 
-const db =  require("./config").mongoURI
-  // process.env.NODE_ENV === "production"
-  //   ? require("./config").mongoURI
-  //   : "mongodb://localhost:27017/your-db";
+const db = process.env.DB;
 
 mongoose
   .connect(db, {
@@ -16,7 +15,7 @@ mongoose
     useCreateIndex: true
   })
   .then(() => console.log("DB connected succesfully!"))
-  .catch(err => console.log("Db connection error" , err));
+  .catch(err => console.log("Db connection error", err));
 
 const port = process.env.PORT || "5000";
 
@@ -27,7 +26,8 @@ app.use(express.json());
 app.use(logger("combined"));
 
 // Routes
-//app.use("/api/sample", sampleRoutes);
+app.use("/api/public", publicRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
